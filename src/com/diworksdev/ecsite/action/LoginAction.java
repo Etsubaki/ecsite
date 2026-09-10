@@ -49,6 +49,6 @@ public class LoginAction extends ActionSpport implements SessionAware{
 
 		@Override
 	public void setSession(Map<String, Object> session){
-			this.session = session;
+			this.session
 		}
 }
