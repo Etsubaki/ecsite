@@ -4,7 +4,13 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-public class LoginAction extends ActionSpport implements SessionAware{
+import com.diworksdev.ecsite.dao.BuyItemDAO;
+import com.diworksdev.ecsite.dao.LoginDAO;
+import com.diworksdev.ecsite.dto.BuyItemDTO;
+import com.diworksdev.ecsite.dto.LoginDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class LoginAction extends ActionSupport implements SessionAware{
 
 	private String loginUserId;
 	private String loginPassword;
@@ -15,7 +21,7 @@ public class LoginAction extends ActionSpport implements SessionAware{
 
 	public String execute(){
 		String result = ERROR;
-		loginDTO = loginDTO.getLoginUserInfo(loginUserId, loginPassword);
+		loginDTO = loginDAO.getLoginUserInfo(loginUserId, loginPassword);
 		session.put("loginUser", loginDTO);
 
 		if(((LoginDTO) session.get("loginUser")). getLoginFlg()){
@@ -49,6 +55,6 @@ public class LoginAction extends ActionSpport implements SessionAware{
 
 		@Override
 	public void setSession(Map<String, Object> session){
-			this.session
+			this.session = session;
 		}
 }
