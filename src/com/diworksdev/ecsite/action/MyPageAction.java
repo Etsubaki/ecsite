@@ -7,13 +7,14 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.ecsite.dao.MyPageDAO;
+import com.diworksdev.ecsite.dto.MyPageDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class MyPageAction extends ActionSupport implements SessionAware{
 
 	public Map<String, Object> session;
 	private MyPageDAO myPageDAO = new MyPageDAO();
-	private ArratList<MyPageDTO> myPageList = new ArratList<MyPageDTO>();
+	private ArrayList<MyPageDTO> myPageList = new ArrayList<MyPageDTO>();
 	private String deleteFlg;
 	private String message;
 
@@ -38,7 +39,7 @@ public class MyPageAction extends ActionSupport implements SessionAware{
 		String item_transaction_id = session.get("id").toString();
 		String user_master_id = session.get("login_user_id").toString();
 
-		int res = myPageDAO.buyItemHistoryDelete(item_tansaction_id, user_master_id);
+		int res = myPageDAO.buyItemHistoryDelete(item_transaction_id, user_master_id);
 
 		if(res > 0){
 			myPageList = null;

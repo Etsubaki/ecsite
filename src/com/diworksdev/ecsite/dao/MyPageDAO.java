@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.diworksdev.ecsite.dto.MyPageDTO;
 import com.diworksdev.ecsite.util.DBConnector;
 
 public class MyPageDAO {
